@@ -1,0 +1,2 @@
+# CommanderFinder
+A WebAPI-based application meant give ideas for Magic: the Gathering Commander decks by digging through the card game's bottomless sea of cards to use as a commander, as well as finding obscure cards that could possibly be used alongside said commanders.

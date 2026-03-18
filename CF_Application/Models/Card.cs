@@ -1,4 +1,4 @@
-namespace CF_API.Models;
+namespace CF_Console.Models;
 
 public record Card
 {

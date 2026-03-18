@@ -96,3 +96,4 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\CF_UnitTesting.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\CF_UnitTesting.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\ref\CF_UnitTesting.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\CF_UnitTesting.sourcelink.json

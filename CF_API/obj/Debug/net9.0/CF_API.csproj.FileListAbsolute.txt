@@ -30,3 +30,4 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\refint
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\ref\CF_API.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.sourcelink.json

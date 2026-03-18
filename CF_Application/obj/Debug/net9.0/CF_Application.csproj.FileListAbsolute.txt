@@ -12,3 +12,4 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\ref\CF_Application.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.sourcelink.json

@@ -1,6 +1,6 @@
 @CF_API_HostAddress = http://localhost:5143
 
-GET {{CF_API_HostAddress}}/weatherforecast/
+GET {{CF_API_HostAddress}}/commanderfinder/
 Accept: application/json
 
 ###

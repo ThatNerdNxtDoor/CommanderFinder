@@ -26,7 +26,7 @@ app.MapGet("/commanderfinder", () =>
 {
     
 })
-.WithName("GetWeatherForecast");
+.WithName("GetCurrentCollections");
 
 app.Run();
 
