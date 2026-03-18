@@ -1,0 +1,14 @@
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\bin\Debug\net9.0\CF_Application.exe
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\bin\Debug\net9.0\CF_Application.deps.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\bin\Debug\net9.0\CF_Application.runtimeconfig.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\bin\Debug\net9.0\CF_Application.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\bin\Debug\net9.0\CF_Application.pdb
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.AssemblyInfoInputs.cache
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.AssemblyInfo.cs
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.csproj.CoreCompileInputs.cache
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\refint\CF_Application.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.pdb
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.genruntimeconfig.cache
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\ref\CF_Application.dll
