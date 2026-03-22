@@ -411,6 +411,16 @@
         "build": {
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "CF_Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/CF_Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CF_Application.dll": {}
+        }
       }
     }
   },
@@ -932,10 +942,16 @@
         "xunit.runner.visualstudio.2.8.2.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "CF_Application/1.0.0": {
+      "type": "project",
+      "path": "../CF_Application/CF_Application.csproj",
+      "msbuildProject": "../CF_Application/CF_Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "CF_Application >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.12.0",
       "coverlet.collector >= 6.0.2",
       "xunit >= 2.9.2",
@@ -971,7 +987,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\thatn\\Documents\\Projects\\CommanderFinder\\CF_Application\\CF_Application.csproj": {
+              "projectPath": "C:\\Users\\thatn\\Documents\\Projects\\CommanderFinder\\CF_Application\\CF_Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "CF_UnitTesting/1.0.0": {
         "dependencies": {
+          "CF_Application": "1.0.0",
           "Microsoft.NET.Test.Sdk": "17.12.0",
           "coverlet.collector": "6.0.2",
           "xunit": "2.9.2",
@@ -339,7 +340,15 @@
           }
         }
       },
-      "xunit.runner.visualstudio/2.8.2": {}
+      "xunit.runner.visualstudio/2.8.2": {},
+      "CF_Application/1.0.0": {
+        "runtime": {
+          "CF_Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -452,6 +461,11 @@
       "sha512": "sha512-vm1tbfXhFmjFMUmS4M0J0ASXz3/U5XvXBa6DOQUL3fEz4Vt6YPhv+ESCarx6M6D+9kJkJYZKCNvJMas1+nVfmQ==",
       "path": "xunit.runner.visualstudio/2.8.2",
       "hashPath": "xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+    },
+    "CF_Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

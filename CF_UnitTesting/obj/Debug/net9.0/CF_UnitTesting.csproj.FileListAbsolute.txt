@@ -97,3 +97,10 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\CF_UnitTesting.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\ref\CF_UnitTesting.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\obj\Debug\net9.0\CF_UnitTesting.sourcelink.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\.msCoverageSourceRootsMapping_CF_UnitTesting
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CoverletSourceRootsMapping_CF_UnitTesting
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CF_Application.deps.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CF_Application.runtimeconfig.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CF_Application.exe
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CF_Application.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_UnitTesting\bin\Debug\net9.0\CF_Application.pdb
