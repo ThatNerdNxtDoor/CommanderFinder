@@ -31,3 +31,7 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\ref\CF_API.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.sourcelink.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Resources\Collections.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

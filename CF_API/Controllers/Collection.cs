@@ -42,7 +42,7 @@ namespace CF_API.Controllers
         }
 
     [HttpPost]
-    public IActionResult Create(CFCollection coll)
+    public async Task<IActionResult> Create(CFCollection coll)
     {            
         CFCollectionService.Add(coll);
         return CreatedAtAction(nameof(GetCollection), new { id = coll.Id }, coll);

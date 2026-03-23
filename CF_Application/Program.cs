@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using CF_Console.Models;
+using System.ComponentModel;
 
 public class CommanderFinderConsole {
     public static async Task Main()
@@ -27,13 +28,31 @@ public class CommanderFinderConsole {
             Console.WriteLine($"Error - {response.StatusCode}");
         }
 
-        Console.WriteLine("======================================================================");
-
         bool runtime = true;
-        while (runtime)
-        {
-            Console.WriteLine();
-        }
+        do {
+            Console.WriteLine("======================================================================");
+            Console.WriteLine("CommanderFinder by Isaiah Thompson");
+            Console.WriteLine("(P)ick out a new random commander.");
+            Console.WriteLine("(O)pen the list of collections.");
+            Console.WriteLine("(Q)uit");
+            Console.WriteLine("Enter your letter command:");
+            string input = Console.ReadLine().ToUpper();
+            switch (input)
+            {
+                case "P":
+                    
+                    break;
+                case "O":
+
+                    break;
+                case "Q":
+                    runtime = false;
+                    break;
+                default:
+                    
+                    break;
+            }
+        } while (runtime);
     }
 
     public static async Task<Card> RetrieveCard(Card? commander) //Retrieves a random card from the Scryfall API
@@ -52,7 +71,7 @@ public class CommanderFinderConsole {
                     //Use the commander argument to determine the search query.
                     //If there is no commander provided, it will retrieve a random card that can be a commander.
                     //If there is a commander provided, it will find a card that is within the commander's color identity.
-                    string cardArgument = commander is null? "is%3Acommander" : $"color_idenity<%3D{commander.ColorsToString()}";
+                    string cardArgument = commander is null? "is%3Acommander" : $"identity<%3D{commander.ColorsToString()}";
                     //Unicode Translations: %3A = " " , %3D = "="
 
                     HttpResponseMessage response = await scryfallClient.GetAsync($"https://api.scryfall.com/cards/random?q={cardArgument}"); //"q=" is the search query argument for the Scryfall API
