@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CF_Application\CF_Application.csproj" />
+    <ProjectReference Include="..\CF_API\CF_API.csproj" />
   </ItemGroup>
 
 </Project>

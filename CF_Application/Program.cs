@@ -1,35 +1,31 @@
 ﻿using System.Text.Json;
 using System.Diagnostics;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using CF_Console.Models;
 using System.ComponentModel;
 
-public class CommanderFinderConsole {
+public static class CommanderFinderConsole {
+    static HttpClient localClient;
+
+    static CommanderFinderConsole()
+    {
+        //Creates a client for accessing the local api
+        localClient = new HttpClient();
+        localClient.BaseAddress = new Uri("https://localhost:7277");
+    }
+
     public static async Task Main()
     {
         //Creates a client for accessing the local api
-        HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri("http://localhost:7277");
-        HttpResponseMessage response = await client.GetAsync("api/CommanderFinder");
+        //localClient = new HttpClient();
+        //localClient.BaseAddress = new Uri("https://localhost:7277");
 
-        if (response.IsSuccessStatusCode)
-        {
-            string jsonResponse = await response.Content.ReadAsStringAsync();
-
-            var collections = JsonSerializer.Deserialize<List<CFCollection>>(jsonResponse,
-                new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-
-            foreach(var coll in collections)
-            {
-                
-            }
-        } else
-        {
-            Console.WriteLine($"Error - {response.StatusCode}");
-        }
-
+        //Main Menu Loop
         bool runtime = true;
         do {
+            List<CFCollection> collections = await FetchApiData();
+            Console.WriteLine($"{collections}");
             Console.WriteLine("======================================================================");
             Console.WriteLine("CommanderFinder by Isaiah Thompson");
             Console.WriteLine("(P)ick out a new random commander.");
@@ -40,10 +36,37 @@ public class CommanderFinderConsole {
             switch (input)
             {
                 case "P":
-                    
+                    Card commander = await RetrieveCard(null);
+                    //commander.printCard();
+                    Console.WriteLine("Do you wish to create a collection with this commander? (Y/N)");
+                    bool validInput = false;
+                    do
+                    {
+                        switch(Console.ReadLine().ToUpper())
+                        {
+                            case "Y":
+                                
+                                HttpResponseMessage response = await localClient.PostAsJsonAsync<Card>("api/CFCollection", commander);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    Console.WriteLine("Collection Creation Successful");
+                                } else
+                                {
+                                    Console.WriteLine($"Error - {response.StatusCode}");
+                                }
+                                validInput = true;
+                                break;
+                            case "N":
+                                validInput = true;
+                                break;
+                        }
+                    } while(!validInput);
                     break;
                 case "O":
-
+                    foreach(CFCollection coll in collections)
+                    {
+                        coll.printHead();
+                    }
                     break;
                 case "Q":
                     runtime = false;
@@ -53,6 +76,25 @@ public class CommanderFinderConsole {
                     break;
             }
         } while (runtime);
+    }
+
+    public static async Task<List<CFCollection>> FetchApiData() //Fetches the data from the API
+    {
+        HttpResponseMessage response = await localClient.GetAsync("/api/CFCollection");
+        
+        if (response.IsSuccessStatusCode)
+        {
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(jsonResponse);
+            var collections = JsonSerializer.Deserialize<List<CFCollection>>(jsonResponse, 
+                new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+
+            return collections;
+        } else
+        {
+            Console.WriteLine($"Error - {response.StatusCode}");
+            return null;
+        }
     }
 
     public static async Task<Card> RetrieveCard(Card? commander) //Retrieves a random card from the Scryfall API

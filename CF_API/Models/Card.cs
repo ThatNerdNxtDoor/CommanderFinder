@@ -2,6 +2,19 @@ namespace CF_API.Models;
 
 public record Card
 {
+    public Card()
+    {
+        ID = "";
+        Name = "";
+        ColorIdentity = new List<string>();
+        TypeLine = "";
+        ManaCost = "";
+        Power = "";
+        Toughness = "";
+        OracleText = "";
+        URI = "";
+    }
+
     private string ID;
     private string Name;
     private List<string> ColorIdentity;

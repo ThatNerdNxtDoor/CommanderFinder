@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,17 +18,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/commanderfinder", "CommanderFinderApi v1");
+        options.SwaggerEndpoint("v1/swagger.json", "CommanderFinderApi v1");
     });
 }
 
 app.UseHttpsRedirection();
+app.UseAuthorization();
 
-app.MapGet("/commanderfinder", () =>
-{
-    
-})
-.WithName("GetCurrentCollections");
+app.MapControllers();
 
 app.Run();
-

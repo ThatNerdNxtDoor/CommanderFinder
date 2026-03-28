@@ -1,5 +1,6 @@
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\appsettings.json
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Resources\Collections.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\CF_API.staticwebassets.endpoints.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\CF_API.exe
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\CF_API.deps.json
@@ -8,6 +9,9 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\CF_API
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\CF_API.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.csproj.AssemblyReference.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\rpswa.dswa.cache.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,6 +20,7 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.csproj.CoreCompileInputs.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.sourcelink.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -30,8 +35,3 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\refint
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\ref\CF_API.dll
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\obj\Debug\net9.0\CF_API.sourcelink.json
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Resources\Collections.json
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -7,9 +7,9 @@ C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.AssemblyInfoInputs.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.AssemblyInfo.cs
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.csproj.CoreCompileInputs.cache
+C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.sourcelink.json
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\refint\CF_Application.dll
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.pdb
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.genruntimeconfig.cache
 C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\ref\CF_Application.dll
-C:\Users\thatn\Documents\Projects\CommanderFinder\CF_Application\obj\Debug\net9.0\CF_Application.sourcelink.json

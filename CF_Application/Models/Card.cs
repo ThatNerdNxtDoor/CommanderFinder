@@ -4,7 +4,7 @@ namespace CF_Console.Models;
 
 public record Card
 {
-    public Card() //Constructer that allows cards to be extracted from the Scryfall API
+    public Card() //Constructor that allows cards to be extracted from the Scryfall API
     {
         ID = "";
         Name = "";
