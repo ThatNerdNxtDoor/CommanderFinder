@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Drawing;
 
 namespace CF_Console.Models;
@@ -39,12 +40,75 @@ public record Card
 
     public string ColorsToString() //Returns the card's colors as a single uninterrupted string
     {
-        string colors = string.Join(",", ColorIdentity.ToArray());
+        string colors;
+        if (color_identity.Capacity == 0) //If no colors are in the color identity, the card is colorless.
+        {
+            colors = "C";
+        } else
+        {
+            colors = string.Join(",", ColorIdentity.ToArray());
+        }
         return colors;
     }
 
     public void PrintCard() //Returns an ascii-fied print of the card
     {
+        int cardWidth = 60;
+        Console.WriteLine($"+{new string('-', cardWidth)}+"); //Top of card + nameplate
         
+        //Card name + Mana Cost
+        int spaceLength = cardWidth - 2 - mana_cost.Length;
+        Console.WriteLine($"| {name.PadRight(spaceLength)}{mana_cost} |");
+
+        Console.WriteLine($"+{new string('-', cardWidth)}+"); //Bottom of nameplate
+        
+        //Scryfall URL where the card art is normally
+        spaceLength = cardWidth - 2;
+        Console.WriteLine($"| {"https://scryfall.com/card/".PadRight(spaceLength)} |");
+        Console.WriteLine($"| {scryfall_uri.Substring(26).PadRight(spaceLength)} |");
+
+        Console.WriteLine($"+{new string('-', cardWidth)}+"); //Top of typeplate
+        
+        //Card type
+        spaceLength = cardWidth - 2;
+        Console.WriteLine($"| {type_line.PadRight(spaceLength)} |");
+
+        Console.WriteLine($"+{new string('-', cardWidth)}+"); //Bottom of typeplate + top of body
+        
+        //Body of card
+
+        //Rules Text
+        spaceLength = cardWidth - 2;
+        string[] words = oracle_text.Replace("\n", " \n ").Split(" ");
+        string textWrap = "";
+        foreach (string word in words)
+        {
+            if (word != "\n") {
+                if ((textWrap + word).Length < spaceLength) //Add word to temp string
+                {
+                    textWrap += word + " ";
+                } else //Print temp string as a line and start a new temp strng
+                {
+                    Console.WriteLine($"| {textWrap.PadRight(spaceLength)} |");
+                    textWrap = word + " ";
+                }
+            } else
+            {
+                Console.WriteLine($"| {textWrap.PadRight(spaceLength)} |");
+                Console.WriteLine($"| {"".PadRight(spaceLength)} |");
+                textWrap = "";
+            }
+        }
+        Console.WriteLine($"| {textWrap.PadRight(spaceLength)} |"); //Print rest of temp string
+
+        //Statblock
+        if (type_line.Contains("Creature"))
+        {
+            string statBlock = $"[{power}/{toughness}]";
+            spaceLength = cardWidth;
+            Console.WriteLine($"|{statBlock.PadLeft(spaceLength)}|");
+        }
+
+        Console.WriteLine($"+{new string('-', cardWidth)}+"); //Bottom of card
     }
 }
