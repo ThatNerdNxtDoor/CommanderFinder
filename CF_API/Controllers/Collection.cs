@@ -12,19 +12,19 @@ namespace CF_API.Controllers
     public class CFCollectionController : ControllerBase
     {
 
-        public CFCollectionController()
+        public CFCollectionController() //Constructor
         {
             
         }
 
         [HttpGet]
-        public ActionResult<List<CFCollection>> GetCollection()
+        public ActionResult<List<CFCollection>> GetCollection() //Get Collection List
         {
             return Ok(CFCollectionService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<CFCollection> GetCollection(int id)
+        public ActionResult<CFCollection> GetCollection(int id) //Get collection by ID (currently unused).
         {
             var collection = CFCollectionService.Get(id);
 
@@ -38,7 +38,7 @@ namespace CF_API.Controllers
 
         [Route("")] //Don't entirely understand why, but putting a route over the POST function allows it to take the post request instead or returning a 405 error
         [HttpPost("{commander}")]
-        public async Task<IActionResult> Create(Card commander)
+        public async Task<IActionResult> Create(Card commander) //Create a collection using a commander card
         {
             Console.WriteLine(commander);
             CFCollection coll = new CFCollection();
@@ -48,10 +48,8 @@ namespace CF_API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] CFCollection coll)
+        public IActionResult Update(int id, [FromBody] CFCollection coll) //Update a collection
         {
-            //CFCollection deserialColl = JsonSerializer.Deserialize<CFCollection>(coll,
-            //    new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
             if (id != coll.id)
             return BadRequest();
             
@@ -65,7 +63,7 @@ namespace CF_API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public IActionResult Delete([FromRoute] int id) //Delete a collection
         {
             var coll = CFCollectionService.Get(id);
             

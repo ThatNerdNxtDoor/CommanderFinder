@@ -108,8 +108,9 @@ public static class CommanderFinderConsole {
         Console.WriteLine(" - (Y)es.");
         Console.WriteLine(" - (N)o.");
         Console.WriteLine(" - No, and (G)enerate another commander.");
+        
         bool validInput = false;
-        do
+        do //Repeated generation loop.
         {
             switch(Console.ReadLine().ToUpper())
             {
@@ -215,8 +216,9 @@ public static class CommanderFinderConsole {
         Console.WriteLine(" - Yes, and generate (A)nother card.");
         Console.WriteLine(" - (N)o.");
         Console.WriteLine(" - No, and (G)enerate another card.");
+
         bool validInput = false;
-        do
+        do //Repeated generation loop.
         {
             switch(Console.ReadLine().ToUpper())
             {

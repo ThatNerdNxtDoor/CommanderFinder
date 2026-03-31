@@ -10,7 +10,7 @@ namespace CF_API.Services
     {
         public static List<CFCollection> Collections { get; set;}
         static int nextId = 0;
-        static CFCollectionService()
+        static CFCollectionService() //Constructor
         {
             Console.WriteLine("Initializing Collection Service");
             FetchDataStorage();
@@ -20,10 +20,8 @@ namespace CF_API.Services
         {
             try {
                 string JsonFile = System.IO.File.ReadAllText("./Resources/Collections.json");
-                //Console.WriteLine(JsonFile);
                 List<CFCollection> collectionData = JsonSerializer.Deserialize<List<CFCollection>>(JsonFile,
                     new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-                //Console.WriteLine(collectionData);
                 if (collectionData != null)
                 {
                     Collections = collectionData;
@@ -42,9 +40,9 @@ namespace CF_API.Services
             Console.WriteLine(Collections);
         }
 
-        public static List<CFCollection> GetAll() => Collections;
+        public static List<CFCollection> GetAll() => Collections; //Get the entire list of collections
 
-        public static CFCollection? Get(int id) => Collections.FirstOrDefault(p => p.id == id);
+        public static CFCollection? Get(int id) => Collections.FirstOrDefault(p => p.id == id); //Get a specific list of collections (currently unused).
 
         public static async Task Add(CFCollection coll) //Add a collection to the database
         {
@@ -77,17 +75,17 @@ namespace CF_API.Services
             SaveToJSON();
         }
 
-        public static void Delete(int id)
+        public static void Delete(int id) //Remove a collection from the list.
         {
             var coll = Get(id);
-            if(coll is null)
+            if(coll is null) {
                 return;
-
+            }
             Collections.Remove(coll);
             SaveToJSON();
         }
 
-        public static void Update(CFCollection coll)
+        public static void Update(CFCollection coll) //Update the collection (add/remove card)
         {
             var index = Collections.FindIndex(p => p.id == coll.id);
             if(index == -1) {
