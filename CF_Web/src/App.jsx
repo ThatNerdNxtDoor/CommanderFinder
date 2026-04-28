@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import Collection from './Models/collection.jsx'
+import Card from './Models/card.jsx'
 
 function App() {
   const [data, setData] = useState(null);
@@ -34,10 +36,32 @@ function App() {
   } else if (error) {
     return(<div>Error: {error}</div>)
   } else if (data) {
+    let decks = JSON.parse(JSON.stringify(data, null, 2));
+    var results = [];
+    decks.forEach((deck, index) => {
+      results.push(<li key={index}>
+        <h2>{deck.commander.name}</h2>
+        <p>ID: {deck.id}</p>
+        <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
+        <ul>
+          {deck.cards.map((card, i) => (
+            <div className = "container">
+            <h3>{card.name}</h3>
+            <p>{card.mana_cost} - {card.type_line}</p>
+            {card.type_line.includes("Creature") ? <p>({card.power}/{card.toughness})</p> : ""}
+            <p className = "rules_text">{card.oracle_text}</p>
+            </div>
+        ))}</ul>
+        <hr></hr>
+        </li>
+      );})
     return(
-      <div>
-        <h1>Fetched Data:</h1>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+      <div className = "container">
+        <h1 className = "plain_text">Deck Collection:</h1>
+        <hr></hr>
+        <ul>
+          {results}
+        </ul>
       </div>
     );
   }

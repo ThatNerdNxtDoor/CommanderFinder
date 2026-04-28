@@ -1,9 +1,22 @@
-body {
-  background-color: burlywood;
+.plain_text {
+  font-size: 20px;
+  color:  lightskyblue;
 }
 
-div {
-  font-size: 20px;
+.rules_text {
+
+}
+
+.container {
+  font-size: 12px;
+  text-wrap: wrap;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid blanchedalmond;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
 }
 
 /*
