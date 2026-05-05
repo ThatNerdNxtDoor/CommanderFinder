@@ -11,7 +11,8 @@ class Card extends React.Component {
             power: "",
             toughness: "",
             oracle_text: "",
-            uri: ""
+            uri: "",
+            image_uris: ""
         };
     }
 }

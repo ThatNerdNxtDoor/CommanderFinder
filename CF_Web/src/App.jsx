@@ -42,10 +42,12 @@ function App() {
       results.push(<li key={index}>
         <h2>{deck.commander.name}</h2>
         <p>ID: {deck.id}</p>
+        <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
         <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
-        <ul>
+        <ul className='card_list'>
           {deck.cards.map((card, i) => (
             <div className = "container">
+            <a href={card.scryfall_uri}><img src={card.image_uris.small}></img></a>
             <h3>{card.name}</h3>
             <p>{card.mana_cost} - {card.type_line}</p>
             {card.type_line.includes("Creature") ? <p>({card.power}/{card.toughness})</p> : ""}
