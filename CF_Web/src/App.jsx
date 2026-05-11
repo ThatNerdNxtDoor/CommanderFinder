@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -11,6 +11,34 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const deleteCard = async (card, deck) => {
+    try {
+      console.log(card);
+      console.log(deck);
+      console.log(Object.values(deck.cards));
+      const new_cards = deck.cards.filter(item => item.oracle_id != card.oracle_id);
+      console.log(new_cards);
+      deck.cards = new_cards;
+      console.log(deck);
+      // Note: Request options allow you to do different HTTP requests instead of using different functions
+      const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(deck)
+      };
+      console.log("https://localhost:7277/api/CFCollection/" + deck.id);
+      const response = await fetch("https://localhost:7277/api/CFCollection/" + deck.id, requestOptions);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP Error: Response Code ${response.status}`);
+      }
+      alert("Card Removed Successfully");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  //Web Render; Only used once in the jsx
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,22 +67,26 @@ function App() {
     let decks = JSON.parse(JSON.stringify(data, null, 2));
     var results = [];
     decks.forEach((deck, index) => {
-      results.push(<li key={index}>
-        <h2>{deck.commander.name}</h2>
-        <p>ID: {deck.id}</p>
-        <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
-        <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
-        <ul className='card_list'>
-          {deck.cards.map((card, i) => (
-            <div className = "container">
-            <a href={card.scryfall_uri}><img src={card.image_uris.small}></img></a>
-            <h3>{card.name}</h3>
-            <p>{card.mana_cost} - {card.type_line}</p>
-            {card.type_line.includes("Creature") ? <p>({card.power}/{card.toughness})</p> : ""}
-            <p className = "rules_text">{card.oracle_text}</p>
-            </div>
-        ))}</ul>
-        <hr></hr>
+      results.push(
+        <li key={index}>
+          <h2>{deck.commander.name}</h2>
+          <p>ID: {deck.id}</p>
+          <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
+          <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
+          <ul className='card_list'>
+            {deck.cards.map((card, i) => (
+              <li className="card_item" key = {i}>
+                <div className = "container">
+                  <a href={card.scryfall_uri}><img src={card.image_uris.small}></img></a>
+                  <h3>{card.name}</h3>
+                  <p>{card.mana_cost} - {card.type_line}</p>
+                  {card.type_line.includes("Creature") ? <p>({card.power}/{card.toughness})</p> : ""}
+                  <p className = "rules_text">{card.oracle_text}</p>
+                  <button className="remove" onClick = {() => deleteCard(card, deck)}>Remove From Collection</button>
+                </div>
+              </li>
+          ))}</ul>
+          <hr></hr>
         </li>
       );})
     return(
@@ -68,5 +100,36 @@ function App() {
     );
   }
 }
+
+/*function deleteCard(card, deck) {
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    const deleteData = async () => {
+      try {
+        const new_deck = deck.filter(item => {
+          item.id != card.id
+        });
+        // Note: Request options allow you to do different HTTP requests instead of using different functions
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(new_deck)
+        };
+        const response = await fetch("https://localhost:7277/api/CFCollection/" + deck.id);
+            
+        if (!response.ok) {
+            throw new Error(`HTTP Error: Response Code ${response.status}`);
+        }
+        setMessage("Card Successfully Removed")
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    deleteData();
+  }, []);
+  alert(message);
+}*/
 
 export default App
