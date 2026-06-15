@@ -10,35 +10,40 @@ function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const deleteCard = async (card, deck) => {
+  
+  //Create a new collection to add to the database
+  const createCollection = async () => {
     try {
-      console.log(card);
-      console.log(deck);
-      console.log(Object.values(deck.cards));
-      const new_cards = deck.cards.filter(item => item.oracle_id != card.oracle_id);
-      console.log(new_cards);
-      deck.cards = new_cards;
-      console.log(deck);
-      // Note: Request options allow you to do different HTTP requests instead of using different functions
-      const requestOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(deck)
-      };
-      console.log("https://localhost:7277/api/CFCollection/" + deck.id);
-      const response = await fetch("https://localhost:7277/api/CFCollection/" + deck.id, requestOptions);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP Error: Response Code ${response.status}`);
-      }
-      alert("Card Removed Successfully");
-    } catch (error) {
-      alert(error.message);
+
+    } catch(error) {
+      alert(error.message)
     }
   }
 
-  //Web Render; Only used once in the jsx
+  //Add card to collection.
+  const addCard = async (deck) => {
+    try {
+      let card = await generateCard(deck == null ? null : deck.commander);
+      
+    } catch(error) {
+      alert(error.message)
+    }
+  }
+
+  //Function for generating a card from Scryfall's API
+  const generateCard = async (commander) => {
+    try {
+      var argument = (commander == null) ? "is%3Acommander" : "identity<%3D" + commander.ColorsToString(); 
+      const response = await fetch("https://api.scryfall.com/cards/random?q=" + argument);
+      let card = JSON.parse(JSON.stringify(response.json(), null, 2));
+
+      return card;
+    } catch(error) {
+        alert(error.message);
+    }
+  }
+
+  //-------------------------Web Render; Only used once in the jsx-------------------------
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -69,29 +74,15 @@ function App() {
     decks.forEach((deck, index) => {
       results.push(
         <li key={index}>
-          <h2>{deck.commander.name}</h2>
-          <p>ID: {deck.id}</p>
-          <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
-          <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
-          <ul className='card_list'>
-            {deck.cards.map((card, i) => (
-              <li className="card_item" key = {i}>
-                <div className = "container">
-                  <a href={card.scryfall_uri}><img src={card.image_uris.small}></img></a>
-                  <h3>{card.name}</h3>
-                  <p>{card.mana_cost} - {card.type_line}</p>
-                  {card.type_line.includes("Creature") ? <p>({card.power}/{card.toughness})</p> : ""}
-                  <p className = "rules_text">{card.oracle_text}</p>
-                  <button className="remove" onClick = {() => deleteCard(card, deck)}>Remove From Collection</button>
-                </div>
-              </li>
-          ))}</ul>
+          <Collection id = {deck.id} commander = {deck.commander} cards = {deck.cards} />
           <hr></hr>
         </li>
       );})
     return(
       <div className = "container">
         <h1 className = "plain_text">Deck Collection:</h1>
+        <hr></hr>
+        <div className='new_card'></div>
         <hr></hr>
         <ul>
           {results}
@@ -100,6 +91,26 @@ function App() {
     );
   }
 }
+
+/*<h2>{deck.commander.name}</h2>
+          <p>ID: {deck.id}</p>
+          <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
+          <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
+          <ul className='card_list'>
+            {deck.cards.map((card, i) => (
+              <li className="card_item" key = {i}>
+                <div className = "container">
+                  <Card name = {card.name} mana_cost = {card.mana_cost} color_identity = {card.color_identity} type_line = {card.type_line}
+                  power = {card.power} toughness = {card.toughness} oracle_text = {card.oracle_text} oracle_id = {card.oracle_id}
+                  scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>;
+                  <button className="remove" onClick = {() => deleteCard(card, deck)}>Remove From Collection</button>
+                </div>
+              </li>
+          ))}</ul>*/
+
+/*<Card name = {card.name} mana_cost = {card.mana_cost} color_identity = {card.color_identity} type_line = {card.type_line}
+                  power = {card.power} toughness = {card.toughness} oracle_text = {card.oracle_text} oracle_id = {card.oracle_id}
+                  scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>*/
 
 /*function deleteCard(card, deck) {
   const [error, setError] = useState(null);
