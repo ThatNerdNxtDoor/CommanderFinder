@@ -31,6 +31,17 @@ button.removeCard{
 ul.card_list {
   display: inline-flex
 }
+
+dialog.cardAddition {
+  width: 40%;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: beige;
+  position: fixed;
+
+}
 /*
 .counter {
   font-size: 16px;

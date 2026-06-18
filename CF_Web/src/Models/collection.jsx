@@ -39,7 +39,8 @@ class Collection extends React.Component {
             }
         }
 
-        return(<div>
+        return(
+        <div>
             <h2>{this.props.commander.name}</h2>
             <p>ID: {this.props.id}</p>
             <a href={this.props.commander.scryfall_uri}><img src={this.props.commander.image_uris.small} alt={this.props.commander.name}></img></a>

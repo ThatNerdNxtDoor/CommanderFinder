@@ -11,10 +11,24 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   
+  //Function for generating a card from Scryfall's API
+  const generateCard = async (commander) => {
+    try {
+      var argument = (commander == null) ? "is%3Acommander" : "identity<%3D" + Card.ColorsToString(commander); 
+      const response = await fetch("https://api.scryfall.com/cards/random?q=" + argument);
+      let card = JSON.parse(JSON.stringify(response.json(), null, 2));
+
+      return card;
+    } catch(error) {
+        alert(error.message);
+    }
+  }
+
   //Create a new collection to add to the database
   const createCollection = async () => {
     try {
-
+      let card = await generateCard(null);
+      //Create dialog box that shows the card and asks if they want to make it a commander
     } catch(error) {
       alert(error.message)
     }
@@ -23,23 +37,34 @@ function App() {
   //Add card to collection.
   const addCard = async (deck) => {
     try {
-      let card = await generateCard(deck == null ? null : deck.commander);
-      
+      let card = await generateCard(deck.commander);
+      //Create popup that shows the card and asks if they want to make it a commander
     } catch(error) {
       alert(error.message)
     }
   }
 
-  //Function for generating a card from Scryfall's API
-  const generateCard = async (commander) => {
+  //Function for deleting a collection from the API
+  const removeCollection = async (deckToRemove, decks) => {
     try {
-      var argument = (commander == null) ? "is%3Acommander" : "identity<%3D" + commander.ColorsToString(); 
-      const response = await fetch("https://api.scryfall.com/cards/random?q=" + argument);
-      let card = JSON.parse(JSON.stringify(response.json(), null, 2));
-
-      return card;
-    } catch(error) {
-        alert(error.message);
+      console.log(deckToRemove);
+      const new_list = decks.filter(item => item.id != deckToRemove.id);
+      console.log(new_list);
+      // Note: Request options allow you to do different HTTP requests instead of using different functions
+      const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(new_list)
+      };
+      console.log("https://localhost:7277/api/CFCollection/" + deckToRemove.id);
+      const response = await fetch("https://localhost:7277/api/CFCollection/" + deckToRemove.id, requestOptions);
+                
+      if (!response.ok) {
+        throw new Error(`HTTP Error: Response Code ${response.status}`);
+      }
+      alert("Collection Removed Successfully");
+    } catch (error) {
+      alert(error.message);
     }
   }
 
@@ -75,72 +100,31 @@ function App() {
       results.push(
         <li key={index}>
           <Collection id = {deck.id} commander = {deck.commander} cards = {deck.cards} />
+          <button className = "removeCard" onClick = {() => removeCollection(deck, decks)}>Delete Collection</button>
           <hr></hr>
         </li>
       );})
     return(
-      <div className = "container">
-        <h1 className = "plain_text">Deck Collection:</h1>
-        <hr></hr>
-        <div className='new_card'></div>
-        <hr></hr>
-        <ul>
-          {results}
-        </ul>
+      <div>
+        <div className = "container">
+          <h1 className = "plain_text">Deck Collection:</h1>
+          <hr></hr>
+          <div className='new_card'></div>
+          <hr></hr>
+          <ul>
+            {results}
+          </ul>
+        </div>
+        <div>
+          <button onClick = {createCollection}>Create Collection (Generate Commander)</button>
+        </div>
+        <dialog className = "cardAddition" open = {false}>
+          <button>Yes</button>
+          <button>No</button>
+        </dialog>
       </div>
     );
   }
 }
-
-/*<h2>{deck.commander.name}</h2>
-          <p>ID: {deck.id}</p>
-          <a href={deck.commander.scryfall_uri}><img src={deck.commander.image_uris.small} alt={deck.commander.name}></img></a>
-          <div>({deck.commander.power}/{deck.commander.toughness}) - {deck.commander.type_line}</div>
-          <ul className='card_list'>
-            {deck.cards.map((card, i) => (
-              <li className="card_item" key = {i}>
-                <div className = "container">
-                  <Card name = {card.name} mana_cost = {card.mana_cost} color_identity = {card.color_identity} type_line = {card.type_line}
-                  power = {card.power} toughness = {card.toughness} oracle_text = {card.oracle_text} oracle_id = {card.oracle_id}
-                  scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>;
-                  <button className="remove" onClick = {() => deleteCard(card, deck)}>Remove From Collection</button>
-                </div>
-              </li>
-          ))}</ul>*/
-
-/*<Card name = {card.name} mana_cost = {card.mana_cost} color_identity = {card.color_identity} type_line = {card.type_line}
-                  power = {card.power} toughness = {card.toughness} oracle_text = {card.oracle_text} oracle_id = {card.oracle_id}
-                  scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>*/
-
-/*function deleteCard(card, deck) {
-  const [error, setError] = useState(null);
-  const [message, setMessage] = useState(null);
-
-  useEffect(() => {
-    const deleteData = async () => {
-      try {
-        const new_deck = deck.filter(item => {
-          item.id != card.id
-        });
-        // Note: Request options allow you to do different HTTP requests instead of using different functions
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(new_deck)
-        };
-        const response = await fetch("https://localhost:7277/api/CFCollection/" + deck.id);
-            
-        if (!response.ok) {
-            throw new Error(`HTTP Error: Response Code ${response.status}`);
-        }
-        setMessage("Card Successfully Removed")
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-    deleteData();
-  }, []);
-  alert(message);
-}*/
 
 export default App
