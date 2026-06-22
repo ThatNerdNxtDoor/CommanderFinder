@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 class Card extends React.Component {
     constructor() {
         super();
-        this.state = {oracle_id: "",
+        this.state = {
+            oracle_id: "",
             name: "",
             color_identity: [],
             type_line: "",

@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import Collection from './Models/collection.jsx'
 import Card from './Models/card.jsx'
+import CardDialog from './Models/cardDialog.jsx'
 
 function App() {
   const [data, setData] = useState(null);
@@ -118,10 +119,7 @@ function App() {
         <div>
           <button onClick = {createCollection}>Create Collection (Generate Commander)</button>
         </div>
-        <dialog className = "cardAddition" open = {false}>
-          <button>Yes</button>
-          <button>No</button>
-        </dialog>
+        <CardDialog />
       </div>
     );
   }

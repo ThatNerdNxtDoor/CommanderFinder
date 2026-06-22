@@ -4,7 +4,8 @@ import Card from './card.jsx'
 class Collection extends React.Component {
     constructor() {
         super();
-        this.state = {id: 0,
+        this.state = {
+            id: 0,
             commander: new Card(),
             cards: new Array(new Card()),
         }
@@ -51,7 +52,7 @@ class Collection extends React.Component {
                     <div className = "container">
                         <Card name = {card.name} mana_cost = {card.mana_cost} color_identity = {card.color_identity} type_line = {card.type_line}
                         power = {card.power} toughness = {card.toughness} oracle_text = {card.oracle_text} oracle_id = {card.oracle_id}
-                        scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>;
+                        scryfall_uri = {card.scryfall_uri} image_uris = {card.image_uris}/>
                     <button className="removeCard" onClick = {() => deleteCard(card, {id: this.props.id, commander: this.props.commander, cards: this.props.cards})}>Remove From Collection</button>
                     </div>
                 </li>
