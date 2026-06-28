@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from 'react'
+import React, { useState, useEffect, use } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -12,13 +12,18 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   
+  const [cardDialogChild, setCardDialogChild] = useState(React.createRef())
+
   //Function for generating a card from Scryfall's API
   const generateCard = async (commander) => {
     try {
       var argument = (commander == null) ? "is%3Acommander" : "identity<%3D" + Card.ColorsToString(commander); 
       const response = await fetch("https://api.scryfall.com/cards/random?q=" + argument);
-      let card = JSON.parse(JSON.stringify(response.json(), null, 2));
-
+      //response is still async, so any text or json data is still in its 'promise' object (not the actually data yet), so it needs to be assigned a variable so it can 
+      // 'dump' the data.
+      let text = await response.text()
+      let card = JSON.parse(text);
+      console.log(card);
       return card;
     } catch(error) {
         alert(error.message);
@@ -28,8 +33,11 @@ function App() {
   //Create a new collection to add to the database
   const createCollection = async () => {
     try {
-      let card = await generateCard(null);
-      //Create dialog box that shows the card and asks if they want to make it a commander
+      let genCard = await generateCard(null);
+      //Open dialog box that shows the card and asks if they want to make it a commander
+      console.log(genCard);
+      document.getElementById("confirmCardDialog").show();
+      cardDialogChild.current.setDialogContent(genCard, "Do you wish to create a collection with (card)?", -1);
     } catch(error) {
       alert(error.message)
     }
@@ -119,7 +127,7 @@ function App() {
         <div>
           <button onClick = {createCollection}>Create Collection (Generate Commander)</button>
         </div>
-        <CardDialog />
+        <CardDialog ref = {cardDialogChild}/>
       </div>
     );
   }
