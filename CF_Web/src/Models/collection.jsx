@@ -2,12 +2,12 @@ import React from 'react';
 import Card from './card.jsx'
 
 class Collection extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            id: 0,
-            commander: new Card(),
-            cards: new Array(new Card()),
+            id: props.id,
+            commander: props.commander,
+            cards: props.cards,
         }
     }
 
@@ -34,7 +34,8 @@ class Collection extends React.Component {
                 if (!response.ok) {
                     throw new Error(`HTTP Error: Response Code ${response.status}`);
                 }
-                    alert("Card Removed Successfully");
+                alert("Card Removed Successfully");
+                window.location.reload();
             } catch (error) {
                 alert(error.message);
             }

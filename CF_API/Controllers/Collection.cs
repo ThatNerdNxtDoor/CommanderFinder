@@ -37,8 +37,8 @@ namespace CF_API.Controllers
         }
 
         //[Route("")] //Don't entirely understand why, but putting a route over the POST function allows it to take the post request instead or returning a 405 error
-        [HttpPost("/post/{commander}")]
-        public async Task<IActionResult> Create(Card commander) //Create a collection using a commander card
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Card commander) //Create a collection using a commander card
         {
             Console.WriteLine(commander);
             CFCollection coll = new CFCollection();

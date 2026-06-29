@@ -22,7 +22,7 @@ function App() {
       //response is still async, so any text or json data is still in its 'promise' object (not the actually data yet), so it needs to be assigned a variable so it can 
       // 'dump' the data.
       let text = await response.text()
-      let card = JSON.parse(text);
+      let card = Card.parseToCard(text);
       console.log(card);
       return card;
     } catch(error) {
@@ -37,7 +37,7 @@ function App() {
       //Open dialog box that shows the card and asks if they want to make it a commander
       console.log(genCard);
       document.getElementById("confirmCardDialog").show();
-      cardDialogChild.current.setDialogContent(genCard, "Do you wish to create a collection with (card)?", -1);
+      cardDialogChild.current.setDialogContent(genCard, "Do you wish to create a collection with this card?", -1);
     } catch(error) {
       alert(error.message)
     }
@@ -72,6 +72,7 @@ function App() {
         throw new Error(`HTTP Error: Response Code ${response.status}`);
       }
       alert("Collection Removed Successfully");
+      window.location.reload();
     } catch (error) {
       alert(error.message);
     }
