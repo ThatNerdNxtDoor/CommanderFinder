@@ -11,7 +11,7 @@ class Collection extends React.Component {
         }
     }
 
-    render() { //NOTE: Functions that are connected to a button need to be within the same scope as the where the button is rendered.
+    render() { //NOTE: Functions that are connected to a button need to be within the same scope as the where the button is rendered (unless when using using 'this.').
         //Function to remove a card from a collection
         const deleteCard = async (card, deck) => {
             try {
@@ -43,7 +43,10 @@ class Collection extends React.Component {
 
         return(
         <div>
-            <h2>{this.props.commander.name}</h2>
+            <div>
+                <h2>{this.props.commander.name}</h2>
+                
+            </div>
             <p>ID: {this.props.id}</p>
             <a href={this.props.commander.scryfall_uri}><img src={this.props.commander.image_uris.small} alt={this.props.commander.name}></img></a>
             <div>({this.props.commander.power}/{this.props.commander.toughness}) - {this.props.commander.type_line}</div>

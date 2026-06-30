@@ -24,7 +24,11 @@ li.card_item {
   width: 320px;
 }
 
-button.removeCard{
+button.addCard {
+  background-color: green;
+}
+
+button.removeCard {
   background-color: rgb(187, 31, 31);
 }
 

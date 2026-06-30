@@ -27,11 +27,11 @@ class CardDialog extends React.Component {
         
     }
 
-    async confirmAddition(card, deckID) {//Posts or updates the API depending on if a deck has been assigned.
+    async confirmAddition(card, deck) {//Posts or updates the API depending on if a deck has been assigned.
         console.log("This all looks good");
         try{
-            let cardJSON = JSON.stringify(card);
-            if (deckID == -1) { //No deck assigned: Create new collection
+            if (deck == null) { //No deck assigned: Create new collection
+                let cardJSON = JSON.stringify(card);
                 const requestOptions = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -43,10 +43,23 @@ class CardDialog extends React.Component {
                     throw new Error(`HTTP Error: Response Code ${response.status}`);
                 }
                 alert("Collection Created Successfully");
-                window.location.reload();
-            } else { //Deck id assigned, updated collection
-
+            } else { //Deck assigned, updated collection
+                deck.cards.push(card);
+                //Create and fetch PUT request
+                let deckJSON = JSON.stringify(deck)
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: deckJSON,
+                };
+                const response = await fetch("https://localhost:7277/api/CFCollection/" + deck.id, requestOptions);
+                            
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: Response Code ${response.status}`);
+                }
+                alert("Card Added Successfully");
             }
+            window.location.reload(); //Reload page to show changes
         } catch(error) {
             alert(error);
         }

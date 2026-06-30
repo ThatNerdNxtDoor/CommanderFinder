@@ -37,7 +37,7 @@ function App() {
       //Open dialog box that shows the card and asks if they want to make it a commander
       console.log(genCard);
       document.getElementById("confirmCardDialog").show();
-      cardDialogChild.current.setDialogContent(genCard, "Do you wish to create a collection with this card?", -1);
+      cardDialogChild.current.setDialogContent(genCard, "Do you wish to create a collection with this card?", null);
     } catch(error) {
       alert(error.message)
     }
@@ -46,8 +46,10 @@ function App() {
   //Add card to collection.
   const addCard = async (deck) => {
     try {
-      let card = await generateCard(deck.commander);
-      //Create popup that shows the card and asks if they want to make it a commander
+      let genCard = await generateCard(deck.commander);
+      //Create popup that shows the card and asks if they want to add it to the collection
+      document.getElementById("confirmCardDialog").show();
+      cardDialogChild.current.setDialogContent(genCard, "Do you wish to add this card to your " + deck.commander.name + " collection?", deck);
     } catch(error) {
       alert(error.message)
     }
@@ -104,29 +106,32 @@ function App() {
   } else if (error) {
     return(<div>Error: {error}</div>)
   } else if (data) {
+    //Parse Data into an array and sort it.
     let decks = JSON.parse(JSON.stringify(data, null, 2));
+    decks.sort((a, b) => a.id - b.id)
+    //Push a render of each deck.
     var results = [];
     decks.forEach((deck, index) => {
       results.push(
         <li key={index}>
           <Collection id = {deck.id} commander = {deck.commander} cards = {deck.cards} />
+          <button className= "addCard" onClick={() => addCard(deck)}>Add Card to Collection</button>
           <button className = "removeCard" onClick = {() => removeCollection(deck, decks)}>Delete Collection</button>
           <hr></hr>
         </li>
       );})
-    return(
+    return( //Return the full list of decks/collections
       <div>
         <div className = "container">
           <h1 className = "plain_text">Deck Collection:</h1>
           <hr></hr>
-          <div className='new_card'></div>
+          <div>
+            <button className="addCard" onClick = {createCollection}>Create Collection (Generate Commander)</button>
+          </div>
           <hr></hr>
           <ul>
             {results}
           </ul>
-        </div>
-        <div>
-          <button onClick = {createCollection}>Create Collection (Generate Commander)</button>
         </div>
         <CardDialog ref = {cardDialogChild}/>
       </div>

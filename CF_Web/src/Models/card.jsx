@@ -30,7 +30,7 @@ class Card extends React.Component {
         </div>)
     }
 
-    ColorsToString(commander) {
+    static ColorsToString(commander) {
         var colors;
         if (commander.length == 0) //If no colors are in the color identity, the card is colorless.
         {
